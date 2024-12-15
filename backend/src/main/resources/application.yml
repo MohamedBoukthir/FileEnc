@@ -16,6 +16,3 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
-server:
-  servlet:
-    context-path: /api/v1/
