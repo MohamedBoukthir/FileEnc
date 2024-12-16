@@ -3,7 +3,7 @@
     <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">Welcome</h2>
   </div>
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm border rounded p-8">
-    <form class="space-y-6">
+    <form class="space-y-6" [formGroup]="loginForm">
       <div>
         <label for="email" class="block text-sm/6 font-medium text-white">Email</label>
         <div class="mt-2">
@@ -11,9 +11,9 @@
                  placeholder="Enter your email here"
                  name="email"
                  id="email"
-                 autocomplete="email"
                  required
-                 class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6">
+                 formControlName="email"
+                 class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6">
         </div>
       </div>
       <div>
@@ -26,14 +26,13 @@
             placeholder="Enter your password here"
             name="password"
             id="password"
-            autocomplete="current-password"
             required
-            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6">
+            formControlName="password"
+            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6">
         </div>
       </div>
-
       <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Login</button>
+        <button type="submit" (click)="login()" class="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Login</button>
       </div>
     </form>
 

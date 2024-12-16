@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -27,16 +30,22 @@ public class UserController {
             return ResponseEntity.badRequest().body("Email Already Exists !!");
         }
         userService.saveUser(user);
-        return ResponseEntity.ok("User registered successfully.");
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "User registered successfully.");
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
         User existingUser = userService.findByEmail(user.getEmail());
         if (existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
-            return ResponseEntity.ok("User logged in successfully.");
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "User logged in successfully.");
+            return ResponseEntity.ok(response);
         }
-        return ResponseEntity.badRequest().body("Invalid Credentials");
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("message", "Invalid credentials");
+        return ResponseEntity.badRequest().body(errorResponse);
     }
 
 }
