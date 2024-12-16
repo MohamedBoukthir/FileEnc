@@ -16,9 +16,9 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User saveUser(User user) {
+    public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
+        userRepository.save(user);
     }
 
     public User findByEmail(String email){
