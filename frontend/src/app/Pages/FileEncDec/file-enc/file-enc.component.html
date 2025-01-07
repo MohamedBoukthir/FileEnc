@@ -38,7 +38,8 @@
     <button type="submit" class="w-full p-3 bg-primary text-white rounded hover:bg-green-700">Encrypt</button>
   </form>
 
+  <!-- Download button will appear here if downloadUrl is set -->
   <div *ngIf="downloadUrl" class="text-center mt-5">
-    <a [href]="downloadUrl" download="encrypted-file" class="bg-primary text-white p-3 rounded hover:bg-green-700">Download Encrypted File</a>
+    <a [href]="downloadUrl" download="encrypted-file" class="bg-primary text-white p-3 rounded hover:bg-green-600">Download Encrypted File</a>
   </div>
 </div>
